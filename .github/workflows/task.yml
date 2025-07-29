@@ -1,0 +1,16 @@
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: 'Commit SHA'
+        required: true
+        type: string
+name: Task
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Commit SHA: $COMMIT_SHA"
+        env:
+          COMMIT_SHA: ${{ inputs.commit_sha }}
