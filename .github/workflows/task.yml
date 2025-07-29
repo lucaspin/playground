@@ -1,6 +1,18 @@
 on:
   workflow_dispatch:
     inputs:
+      superplane_stage_id:
+        description: 'Superplane Stage ID'
+        required: true
+        type: string
+      superplane_execution_id:
+        description: 'Superplane Execution ID'
+        required: true
+        type: string
+      superplane_execution_token:
+        description: 'Superplane Execution Token'
+        required: true
+        type: string
       commit_sha:
         description: 'Commit SHA'
         required: true
