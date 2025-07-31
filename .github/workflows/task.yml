@@ -1,22 +1,16 @@
 on:
   workflow_dispatch:
     inputs:
-      superplane_stage_id:
-        description: 'Superplane Stage ID'
-        required: true
-        type: string
       superplane_execution_id:
         description: 'Superplane Execution ID'
-        required: true
-        type: string
-      superplane_execution_token:
-        description: 'Superplane Execution Token'
         required: true
         type: string
       commit_sha:
         description: 'Commit SHA'
         required: true
         type: string
+permissions:
+  id-token: write
 name: Task
 jobs:
   test:
@@ -24,5 +18,8 @@ jobs:
     steps:
       - run: |
           echo "Commit SHA: $COMMIT_SHA"
+          echo "Execution ID: $EXECUTION_ID"
+          env | grep GITHUB
         env:
           COMMIT_SHA: ${{ inputs.commit_sha }}
+          EXECUTION_ID: ${{ inputs.superplane_execution_id }}
