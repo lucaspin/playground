@@ -23,7 +23,6 @@ jobs:
         id: idToken
         with:
           script: |
-            const core = require('@actions/core')
             let token = await core.getIDToken('superplane')
             coredemo.setOutput('token', token)
       - run: |
