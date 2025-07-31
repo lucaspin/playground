@@ -24,7 +24,7 @@ jobs:
         with:
           script: |
             let token = await core.getIDToken('superplane')
-            coredemo.setOutput('token', token)
+            core.setOutput('token', token)
       - run: |
           echo "Commit SHA: $COMMIT_SHA"
           echo "Execution ID: $EXECUTION_ID"
