@@ -16,10 +16,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Install OIDC Client from Core Package
+        run: npm install @actions/core@1.6.0 @actions/http-client
+      - name: Get Id Token
+        uses: actions/github-script@v7
+        id: idToken
+        with:
+          script: |
+            const core = require('@actions/core')
+            let token = await core.getIDToken('superplane')
+            coredemo.setOutput('token', token)
       - run: |
           echo "Commit SHA: $COMMIT_SHA"
           echo "Execution ID: $EXECUTION_ID"
-          env | grep GITHUB
+          echo "Token: $GITHUB_ID_TOKEN"
         env:
           COMMIT_SHA: ${{ inputs.commit_sha }}
           EXECUTION_ID: ${{ inputs.superplane_execution_id }}
+          GITHUB_ID_TOKEN: ${{ steps.idToken.outputs.token }}
