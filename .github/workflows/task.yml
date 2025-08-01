@@ -29,6 +29,13 @@ jobs:
           echo "Commit SHA: $COMMIT_SHA"
           echo "Execution ID: $EXECUTION_ID"
           echo "Token: $GITHUB_ID_TOKEN"
+          echo "Run ID: $GITHUB_RUN_ID"
+          curl \
+            https://b500938a4c96.ngrok-free.app/api/v1/outputs \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $GITHUB_ID_TOKEN" \
+            --data "{\"execution_id\":\"$EXECUTION_ID\",\"external_id\":\"$GITHUB_RUN_ID\",\"outputs\":{\"OUTPUT_1\":\"a\"}}"
         env:
           COMMIT_SHA: ${{ inputs.commit_sha }}
           EXECUTION_ID: ${{ inputs.superplane_execution_id }}
