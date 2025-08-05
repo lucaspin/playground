@@ -7,8 +7,9 @@ on:
         type: string
       commit_sha:
         description: 'Commit SHA'
-        required: true
+        required: false
         type: string
+        default: "whatever"
 permissions:
   id-token: write
 name: Task
@@ -31,7 +32,7 @@ jobs:
           echo "Token: $GITHUB_ID_TOKEN"
           echo "Run ID: $GITHUB_RUN_ID"
           curl -s \
-            https://448bb85112e3.ngrok-free.app/api/v1/outputs \
+            https://6a6ae60b1842.ngrok-free.app/api/v1/outputs \
             -X POST \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $GITHUB_ID_TOKEN" \
