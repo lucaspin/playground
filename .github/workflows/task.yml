@@ -28,6 +28,7 @@ jobs:
             let token = await core.getIDToken('superplane')
             core.setOutput('token', token)
       - run: |
+          sleep 60
           curl -s \
             https://e28c4c0296bc.ngrok-free.app/api/v1/outputs \
             -X POST \
