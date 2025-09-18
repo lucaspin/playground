@@ -7,9 +7,8 @@ on:
         type: string
       commit_sha:
         description: 'Commit SHA'
-        required: false
+        required: true
         type: string
-        default: "whatever"
 permissions:
   id-token: write
 name: Task
