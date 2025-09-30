@@ -1,0 +1,24 @@
+on:
+  workflow_dispatch:
+    inputs:
+      resumeUrl:
+        description: 'URL to call at the end of the workflow'
+        required: true
+        type: string
+permissions:
+id-token: write
+name: Task
+run-name: "Task for n8n"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sleep 10
+          curl -s \
+            $RESUME_URL \
+            -X POST \
+            -H "Content-Type: application/json" \
+            --data "{\"external_id\":\"$GITHUB_RUN_ID\",\"outputs\":{\"OUTPUT_1\":\"$(openssl rand -hex 8)\"}}"
+        env:
+          RESUME_URL: ${{ inputs.resumeUrl }}
