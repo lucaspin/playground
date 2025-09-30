@@ -6,8 +6,8 @@ on:
         required: true
         type: string
 permissions:
-id-token: write
-name: Task
+  id-token: write
+name: Task for n8n
 run-name: "Task for n8n"
 jobs:
   test:
