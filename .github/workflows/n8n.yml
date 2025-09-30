@@ -15,10 +15,11 @@ jobs:
     steps:
       - run: |
           sleep 10
+          echo $RESUME_URL
           curl -s \
             $RESUME_URL \
             -X POST \
             -H "Content-Type: application/json" \
-            --data "{\"external_id\":\"$GITHUB_RUN_ID\",\"outputs\":{\"OUTPUT_1\":\"$(openssl rand -hex 8)\"}}"
+            --data "{\"outputs\":{\"OUTPUT_1\":\"$(openssl rand -hex 8)\"}}"
         env:
           RESUME_URL: ${{ inputs.resumeUrl }}
