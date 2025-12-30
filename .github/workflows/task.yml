@@ -17,4 +17,5 @@ jobs:
     steps:
       - run: |
           echo hello
+          asdasdasdasd
           sleep 60
