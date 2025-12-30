@@ -9,6 +9,10 @@ on:
         description: 'Superplane Canvas ID'
         required: true
         type: string
+      hello:
+        description: "just testing"
+        required: true
+        type: string
 name: Task
 run-name: "Task - ${{ inputs.superplane_execution_id }}"
 jobs:
