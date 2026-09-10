@@ -1,0 +1,11 @@
+on:
+  pull_request:
+
+name: CI
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sleep 10
+          echo hello
